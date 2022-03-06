@@ -78,8 +78,9 @@ export default function ReactTree() {
         item.uniqueKey = `${parentKey?.length > 0 ? `${parentKey},${key}`: `${key}`}`
 
         return(
-          <div className='tree-container pdL1 pdT1'>
+          <div className='tree-container mrL1 pdT1' style={{borderLeft: '1px solid black'}}>
             <div className='tree-row'>
+              <hr style={{minWidth: '16px', float: 'left'}}/>
               <span className={`react-tree-input`}>
                 <input
                   type="text"
@@ -140,7 +141,7 @@ export default function ReactTree() {
   return (
     <div className={`react-tree-container`}>
       {console.log(treeData)}
-      <div className={`react-tree-row`}>
+      <div className={`react-tree-row`} >
         {renderItems(treeData)}
       </div>
     </div>
