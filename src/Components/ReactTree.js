@@ -112,20 +112,22 @@ export default function ReactTree() {
   }
 
   const removeNode = (values) => {
-    // console.log((values))
-    let tempArr = [...treeData]
-    // values.nodeInfo.pop()
-    const newKey = values.uniqueKey.slice(0, values.uniqueKey.length -2)
-    // console.log(newKey)
-    // const newArr = values.nodeInfo.map(i => tempArr = tempArr[i].children)
-    removeMapper(newKey, values.uniqueKey.charAt(values.uniqueKey.length -1))
+    if(values.uniqueKey.length > 1)
+    {
+      const newKey = values.uniqueKey.slice(0, values.uniqueKey.length -2)
+      removeMapper(newKey, values.uniqueKey.charAt(values.uniqueKey.length -1))
+    }
+    else{
+      treeData.splice(values.uniqueKey, 1)
+      setTreeData([...treeData])
+    }
   }
 
   const removeMapper = (nkey, uniqueKey, arr = treeData) => {
-    arr.map((item, key) => {
+    arr.map(item => {
       if(item.uniqueKey === nkey)
       {
-        item.children.splice(uniqueKey)
+        item.children.splice(uniqueKey,1)
         setTreeData([...treeData])
         return
       }
