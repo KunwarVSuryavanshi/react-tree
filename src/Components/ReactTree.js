@@ -71,16 +71,14 @@ export default function ReactTree() {
 
   const renderItems = (nodes, parentKey) => {
     return (
-      nodes.map((item, key) => {
-        // item.nodeInfo = `${parentKey !== undefined && parentKey !== null ? parentKey +""+ key : key}`
-        // item.nodeInfo = parentKey?.length > 0 ? (item.nodeInfo = new Array()) && item.nodeInfo.push(parentKey, key) : [key]
+      nodes?.map((item, key) => {
         item.nodeInfo = parentKey?.length > 0 ? [...parentKey, key] : [key]
         item.uniqueKey = `${parentKey?.length > 0 ? `${parentKey},${key}`: `${key}`}`
-
+        
         return(
-          <div className='tree-container mrL1 pdT1' style={{borderLeft: '1px solid black'}}>
-            <div className='tree-row'>
-              <hr style={{minWidth: '16px', float: 'left'}}/>
+          <div className='tree-container mrL3'>
+            <div className={`tree-row ${item?.nodeInfo?.length === 1 ? item?.nodeInfo[0] !== 0 ? 'pdT2' : '' : 'pdT2'}`}>
+              <hr className='hr-line'/>
               <span className={`react-tree-input`}>
                 <input
                   type="text"
@@ -88,7 +86,7 @@ export default function ReactTree() {
                   onChange={(e) => onChangeHandler(e, item)}
                 />
               </span>
-              <span>
+              <span className='react-tree-btn'>
                 <button onClick={() => addNode(item)}>Add</button>
                 <button onClick={() => removeNode(item)}>Remove</button>
               </span>
@@ -139,11 +137,14 @@ export default function ReactTree() {
   }
 
   return (
-    <div className={`react-tree-container`}>
-      {console.log(treeData)}
-      <div className={`react-tree-row`} >
-        {renderItems(treeData)}
+    <>
+      <div className='empty-div'>
       </div>
-    </div>
+      <div className={`react-tree-container`} style={{boxSizing: 'border-box'}}>
+        <div className={`react-tree-row`} >
+          {renderItems(treeData)}
+        </div>
+      </div>
+    </>
   )
 }

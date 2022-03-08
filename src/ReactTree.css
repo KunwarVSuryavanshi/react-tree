@@ -7,9 +7,34 @@
 .pdT1 {
   padding-top: 1vh !important;
 }
+.pdT2 {
+  padding-top: 2vh !important;
+}
+.pdB2 {
+  padding-bottom: 2vh !important;
+}
+
+
 .mrL1 {
   margin-left: 1vw !important;
 }
+.mrL3 {
+  margin-left: 3vw !important;
+}
 .mrT1 {
   margin-top: 1vh !important;
+}
+.mrB2 {
+  margin-bottom: 2vh !important;
+}
+
+.hr-line {
+  min-width: 16px;
+  float: left;
+}
+.tree-container {
+  border-left: 1px solid black;
+}
+.empty-div {
+  
 }
