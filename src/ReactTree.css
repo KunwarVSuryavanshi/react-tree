@@ -33,8 +33,12 @@
   float: left;
 }
 .tree-container {
-  border-left: 1px solid black;
+  /* border-left: 1px solid black; */
 }
 .empty-div {
-  
+  border-left: 2px solid black;
+  left: 3% !important;
+  top: 1%;
+  position: absolute;
+  min-height: 4vh;
 }
