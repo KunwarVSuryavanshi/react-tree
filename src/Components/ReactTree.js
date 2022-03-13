@@ -1,73 +1,13 @@
-import React, { useState } from 'react'
-import '../ReactTree.css'
+import React, { useEffect, useState } from 'react'
+import './ReactTree.css'
 
-export default function ReactTree() {
-  const [treeData, setTreeData] = useState([
-    {
-      value: 'Parent 1',
-      children: [
-        {
-          value: 'Children 1-1',
-          children: [
-            {
-              value: 'Children 1-1-1',
-              children: [
-                {
-                  value: 'Children 1-1-1-1',
-                  children: [
-                    {
-                      value: 'Children 1-1-1-1-1',
-                      children: []
-                    },
-                    {
-                      value: 'Children 1-1-1-1-2',
-                      children: []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              value: 'Children 1-1-2',
-              children: []
-            },
-            {
-              value: 'Children 1-1-3',
-              children: []
-            }
-          ]
-        },
-        {
-          value: 'Children 1-2',
-          children: []
-        },
-        {
-          value: 'Children 1-3',
-          children: []
-        }
-      ]
-    },
-    {
-      value: 'Parent 2',
-      children: [
-        {
-          value: 'Children 2-1',
-          children: []
-        },
-        {
-          value: 'Children 2-2',
-          children: []
-        },
-        {
-          value: 'Children 2-3',
-          children: []
-        }
-      ]
-    },
-    { value: 'Parent 3', children: [] },
-    { value: 'Parent 4', children: [] },
-    { value: 'Parent 5', children: [] }
-  ])
+export default function ReactTree(props) {
+  const [treeData, setTreeData] = useState([])
+
+  const handleClick = (item) => {
+    item.expanded = !item.expanded
+    setTreeData([...treeData])
+  }
 
   const renderItems = (nodes, parentKey) => {
     return (
@@ -76,19 +16,26 @@ export default function ReactTree() {
         item.uniqueKey = `${parentKey?.length > 0 ? `${parentKey},${key}` : `${key}`}`
 
         return (
-          <div className='tree-container pdL2' style={{borderLeft: '2px solid black'}}>
-            <div className={`tree-row ${item?.nodeInfo?.length === 1 ? item?.nodeInfo[0] !== 0 ? 'pdT2' : '' : 'pdT2'}`} style={{ position: 'relative' }}>
-              <span style={{display: 'inline-block', minHeight: '2vh', borderLeft: '2px solid black', top: '1.65vh', position: 'relative' }}>
-              </span>
-              <div style={{display: 'inline-block'}}>
-                <hr style={{ display: 'inline-block', minWidth: '2vw', position: 'relative', top: '0.7vh' }} />
-              </div>
+          <div className='tree-container pdL3'>
+            {item?.children?.length > 0 &&
+              <>
+              {item?.expanded ?
+                <div className='drop_icon' onClick={() => handleClick(item)}>
+                  &#x25BC;
+                </div>
+                :
+                <div className='drop_icon' onClick={() => handleClick(item)}>
+                  &#x25B6;
+                </div>}
+              </>
+            }
+            <div className={`tree-row ${item?.nodeInfo?.length === 1 ? item?.nodeInfo[0] !== 0 ? 'pdT2' : '' : 'pdT2'}`}>
               <span className={`react-tree-input`} >
                 <input
-                  // style={{ minHeight: '12vh' }}
                   type="text"
                   value={item.value}
                   onChange={(e) => onChangeHandler(e, item)}
+                  placeholder={item.placeholder ? item.placeholder : props.genericPlacholder || "Enter text ..."}
                 />
               </span>
               <span className='react-tree-btn'>
@@ -96,8 +43,10 @@ export default function ReactTree() {
                 <button onClick={() => removeNode(item)}>Remove</button>
               </span>
             </div>
-            {item.children?.length > 0 &&
-              renderItems(item.children, item.nodeInfo)
+            {item?.children?.length > 0 && item?.expanded ?
+              renderItems(item?.children, item?.nodeInfo)
+              :
+              <></>
             }
           </div>
         )
@@ -139,15 +88,24 @@ export default function ReactTree() {
     })
   }
 
+  const mapper = (datas) => {
+    datas.map(item => {
+      if (item.expanded === undefined || item.expanded === null)
+        item.expanded = true;
+      if (item.children)
+        mapper(item.children)
+    })
+  }
+
+  useEffect(() => {
+    mapper(props.treeData)
+    setTreeData([...props.treeData])
+  },[])
+
   return (
     <>
-      <div className={`react-tree-container pdL2`} style={{ boxSizing: 'border-box' }}>
-        {/* <div className='empty-div'>
-      </div> */}
-        {/* <span className='pdL1'></span>
-        <span style={{ minHeight: '2vh', borderLeft: '2px solid black', minWidth: '2vw' }}>
-        </span> */}
-        <div className={`react-tree-row pdL2`} >
+      <div className={`react-tree-container`}>
+        <div className={`react-tree-row`} >
           {renderItems(treeData)}
         </div>
       </div>

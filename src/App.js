@@ -1,9 +1,10 @@
 import ReactTable from "./Components/ReactTree";
+import TestComponent from "./TestComponent";
 
 function App() {
   return (
     <div className="App">
-      <ReactTable/>
+      <TestComponent/>
     </div>
   );
 }

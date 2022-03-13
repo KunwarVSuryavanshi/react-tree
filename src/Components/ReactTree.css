@@ -1,5 +1,5 @@
-.pdL2 {
-  padding-left: 2vw !important;
+.pdL3 {
+  padding-left: 3vw !important;
 }
 .pdL1 {
   padding-left: 1vw !important;
@@ -32,8 +32,8 @@
   min-width: 16px;
   float: left;
 }
-.tree-container {
-  /* border-left: 1px solid black; */
+.react-tree-container {
+  padding-left: 2vw;
 }
 .empty-div {
   border-left: 2px solid black;
@@ -41,4 +41,30 @@
   top: 1%;
   position: absolute;
   min-height: 4vh;
+}
+
+.drop_icon {
+  display: inline-block;
+  padding-right: 8px;
+  margin-left: -22px;
+  cursor: pointer;
+}
+
+.tree-row {
+  display: inline-block;
+}
+
+.react-tree-input > input {
+  border: 1px solid #ccc; 
+  padding: 7px 14px 9px; 
+  transition: 0.4s;
+}
+
+.react-tree-btn{
+  padding: 8px;
+}
+
+.react-tree-btn > button{
+  border-radius: 3px solid #ccc;
+  margin: 4px;
 }
