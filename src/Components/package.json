@@ -1,10 +1,11 @@
 {
   "name": "react-tree-input",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "react-input-tree",
   "main": "ReactTree.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KunwarVSuryavanshi/react-tree"
   },
   "keywords": [
     "react",

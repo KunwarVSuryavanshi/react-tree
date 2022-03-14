@@ -12,7 +12,7 @@ Deletes the current node as well as its child node if any.\
 For input and output structure refer `TestComponent.js`.\
 
 ## Some SS ?
-![Screenshot](../react-tree/src/Image/Screenshot%202022-03-13%20161833.png)
+![Image](https://github.com/KunwarVSuryavanshi/react-tree/blob/5748f6352d4bb9720798da2b578719420ca20a08/src/Image/Screenshot%202022-03-13%20161833.png?raw=true "Input Tree")
 
 ## Available Scripts
 
