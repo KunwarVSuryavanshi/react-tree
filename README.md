@@ -30,6 +30,6 @@ The page will reload when you make changes.
 
 ### Left
 
-Stopping addition of new node when previous one is empty.
-Max depth in a node.
+Stopping addition of new node when previous one is empty.\
+Max depth in a node.\
 Accepting input as well as btn components from parent component for more customization.
