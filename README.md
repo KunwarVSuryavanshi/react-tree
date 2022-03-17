@@ -6,7 +6,7 @@ Run `npm i react-tree-input` to install component directly.
 ## Add btn
  This simply adds one new node under the current node.
 
-## Delete btn
+## Remove btn
 Deletes the current node as well as its child node if any.
 
 ## I/O str
@@ -28,7 +28,7 @@ The page will reload when you make changes.
 
 
 
-### Left
+## Left
 
 Stopping addition of new node when previous one is empty.\
 Max depth in a node.\
